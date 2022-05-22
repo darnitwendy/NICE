@@ -1,0 +1,97 @@
+![image](https://user-images.githubusercontent.com/106001771/169677037-4a49ac25-b331-46bf-80f1-40ed6a66b313.png)
+
+Dedeker Randolph
+Hello, I was scheduled to begin work today but I seem to have no access to my workstation. 
+The workstation at my desk does not really seem to be setup at all! Please help!
+
+Richard LeGrand
+I JUST GOT THIS EMAIL FROM THE NEW TEMPORARY SECURITY CONSULTANT. MS. RANDOLPH DOES NOT YET HAVE 
+AN ACCOUNT OR CONNECTED SYSTEM THIS SHOULD HAVE BEEN DONE LONG AGO AND I DON'T HAVE TIME FOR THIS, FIX IT.
+
+Gary Thatcher
+Hello @playerone as you can see things are a bit stressful lately and I have not had time to 
+work on some of these more trivial matters, many other things have taken my attention so I leave 
+the task in your capable hands. @gbates will tell you more.
+
+Gilly Bates
+Hi @playerone, I have been assigned to help you along with adding Ms. Randolph, 
+our new temporary security consultant, to our network. There are certain considerations
+that must be taken into account. 
+
+Her workstation should be assigned 172.16.30.6 for the IP address; 
+make sure to set the right subnet mask as well. We are a /24 network if you didn't know. 
+Based on the IP address that would mean her workstation is in the Internal subnet and the gateway you set should reflect as such.
+
+The DNS server address also needs to be manually set on her workstation so it can resolve internal and external names. 
+Since our DNS server also happens to be our Domain-Controller, you can find it's IP address on the network map.
+
+Oh! Almost forgot, you will need to add a DNS entry for her workstation in the DNS server on the Domain-Controller. 
+Her workstation FQDN should be SecConsultantKali.daswebs.com and to make it all match up the workstation hostname needs to be set to SecConsultantKali.
+
+Gilly Bates
+So.. that takes care of all the network stuff I think. Once you are done with that you need to 
+make sure she has sufficient local machine access so she can get her sensitive work done. 
+Our naming guidelines are always first initial plus last name (all lowercase) for usernames 
+so we will just do that here for Ms. Randolph. Not sure how you usually create users but just 
+make sure her user account also gets a home directory in the usual /home/herusername/ way. 
+
+Also, since I'm not sure what she is doing, or if we should ask, just give her full sudo access on her workstation. Anything else @drandolph?
+
+Dedeker Randolph
+All that sounds fine to me. As one other thing I'd like @playerone, make sure my default shell is bash. Other than that we are good! Thanks!
+
+
+
+The requirements are:
+
+Set the workstation for D. Rudolph to SecConsultantKali, 172.16.30.6/24 with 172.16.5 as the gateway and the AD (Domain-Controller) 172.16.30.2 as the DNS server.
+
+On the DNS server:
+Control Panel > Administrative Tools > DNS Manager
+AD > Forward Lookup Zones > daswebs.com
+Right click on daswebs.com > New Host (A or AAAA)
+
+Set the name to SecConsultantKali
+Set the domain name to daswebs.com
+Set the IP address to 172.16.30.6
+Checked create associated pointer record
+
+![image](https://user-images.githubusercontent.com/106001771/169677129-e47e7867-d985-4f43-a391-d6560ccadc08.png)
+![image](https://user-images.githubusercontent.com/106001771/169677139-0d23eb6d-223d-4aa0-829b-444c5e0e1ea9.png)
+
+
+On the Security-Desk Workstation:
+
+(I took the screenshots after I had completed the challenge so the hostname is already SecConsultantKali instead of Security-Desk)
+
+Changed the hostname:
+![image](https://user-images.githubusercontent.com/106001771/169677153-adb3784f-9d14-4799-a91d-40626b4abeba.png)
+
+![image](https://user-images.githubusercontent.com/106001771/169677172-191c3d61-0728-43e6-a7f8-e47286b120ee.png)
+
+
+Set the DNS server:
+
+![image](https://user-images.githubusercontent.com/106001771/169677193-021bd742-d347-482a-87c4-6972428504c2.png)
+
+![image](https://user-images.githubusercontent.com/106001771/169677202-cc19888c-7227-4ffd-8578-10640908dfd1.png)
+
+
+Set the gateway: 
+
+![image](https://user-images.githubusercontent.com/106001771/169677215-729c4f11-18e0-4fa6-8a07-26a401ce78f8.png)
+
+Added user:
+
+![image](https://user-images.githubusercontent.com/106001771/169677239-227fca8b-8a21-4433-ad04-6f2dbe3a4e1b.png)
+
+Gave sudo priv:
+
+![image](https://user-images.githubusercontent.com/106001771/169677268-c11a566b-7730-4777-b28f-162835212b57.png)
+
+Changed shell to bash
+
+![image](https://user-images.githubusercontent.com/106001771/169677287-e071cd07-bf2c-42a7-9349-c380724d3698.png)
+
+
+
